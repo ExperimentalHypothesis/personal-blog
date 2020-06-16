@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="uk-container uk-grid" >
+
+    <!-- ADDRESS -->
+    <div class="uk-width-1-3">
+        <h3 class="title">Current Address</h3>
+        <legend class="border-bottom mb=4"></legend>
+        <p>Sumavska 1234<p>
+        <p>Praha 3 vihodrp</p>
+        <p>120 00</p>
+        <p>Czech Republic</p>
+    </div>
+
+    <!-- FORM -->
+    <div class="uk-width-2-3" >
+           <h3 class="title">Send me a message</h3>
+              <form action="" method="POST">
+                <legend class="border-bottom mb=4"></legend>
+                {{ form.hidden_tag() }}
+                <fieldset class="uk-fieldset">
+
+                    <!-- NAME VALIDATION -->
+                    <div class="uk-margin">
+                        {% if form.name.errors %}
+                            {{ form.name(class="uk-input uk-form-small uk-form-danger")}}
+                            <div class="uk-text-small uk-text-danger">
+                                {% for error in form.name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.name(class="uk-input uk-form-small")}}      
+                        {% endif %}
+                    </div>
+
+                    <!-- EMAIL VALIDATION -->
+                    <div class="uk-margin">
+                        {% if form.email.errors %}
+                        {{ form.email(class="uk-input uk-form-small uk-form-danger")}}
+                        <div class="uk-text-small uk-text-danger">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.email(class="uk-input uk-form-small")}}
+                        {% endif %}
+                    </div>
+
+                    <!-- MESSAGE VALIDATION -->
+                    <div class="uk-margin">
+                        {% if form.body.errors %}
+                        {{ form.body(class="uk-textarea uk-form-danger")}}
+                        <div class="uk-text-small uk-text-danger">
+                            {% for error in form.body.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form.body(class="uk-textarea")}}
+                        {% endif %}
+                    </div>
+
+
+                    
+                    <div class="uk-margin">
+                        {{ form.submit(class="uk-button uk-button-default") }}
+                    </div>
+                </fieldset>
+            </form>
+    
+        <!-- flash messages-->  
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="uk-alert-{{ category }}" uk-alert>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+<div class="uk-margin">
+    {{ form.name.label(class="uk-input") }}
+    <!-- <input class="uk-input" type="text" placeholder="Name"> -->
+</div>
+
+<div class="uk-margin">
+    <input class="uk-input" type="text" placeholder="Email">
+</div>
+
+<div class="uk-margin">
+    <textarea class="uk-textarea" rows="5" placeholder="Textarea"></textarea>
+</div>
+
+<button class="uk-button uk-button-default">Submit</button>

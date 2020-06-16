@@ -1,4 +1,6 @@
+# environments
 .venv
+.env
 
 # byte-compiled
 __pychace__/
