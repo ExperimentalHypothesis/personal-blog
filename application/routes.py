@@ -2,8 +2,8 @@ from datetime import datetime as dt
 
 from flask import render_template, url_for, redirect, flash, request
 from flask import current_app as app
-from application.forms import ContactForm
-from application.models import db, MessageModel
+from .forms import ContactForm
+from .models import db, MessageModel
 
 @app.route('/')
 def index():
