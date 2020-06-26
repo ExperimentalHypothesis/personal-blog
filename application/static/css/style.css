@@ -1,15 +1,4 @@
-.uk-container {
-    margin-top: 150px;
+.my-container{
+    margin-left: 130px;
+    margin-right: 130px;
 }
-
-.uk-grid {
-    margin-left: 50px;
-}
-
-.uk-card-body{
-    text-align: justify;
-}
-
-
-a { text-decoration: none; }
-
