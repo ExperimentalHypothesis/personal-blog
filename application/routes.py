@@ -5,9 +5,9 @@ from flask import current_app as app
 from .forms import ContactForm
 from .models import db, MessageModel
 
-@app.route('/')
-def index():
-    return render_template("index.html")
+# @app.route('/')
+# def index():
+#     return render_template("index.html")
 
 @app.route('/about')
 def about():
@@ -17,6 +17,7 @@ def about():
 def projects():
     return render_template("projects.html")
 
+@app.route('/')
 @app.route('/posts')
 def posts():
     return render_template("posts.html")
