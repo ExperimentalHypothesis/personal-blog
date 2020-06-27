@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h3 class="title">New Post</h3>
+<form action="" method="POST">
+    <legend class="border-bottom mb=4"></legend>
+        {{ form.hidden_tag()}}
+    <fieldset class=uk-fieldset>
+        
+        <!---TITLE + VALIDATION -->
+        <div class="uk-margin">
+            {% if form.title.errors %}
+                {{ form.title(class="uk-input uk-form-small uk-form-danger")}}
+                <div class="uk-text-small uk-text-danger">
+                    {% for errors in form.title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.title(class="uk-input uk-form-small")}}
+            {% endif %}
+        </div>
+        
+        <!-- BODY -->
+        <div class="uk-margin">
+            {% if form.body.errors %}
+                <div class="uk-text-small uk-text-danger">
+                    {% for error in form.body.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {{ form.body(class="uk-textarea uk-form-danger")}}
+            {% else %}
+                {{ form.body(class="uk-textarea") }}
+            {% endif %}
+        </div>
+
+        <div>
+            {{ form.submit(class="uk-button uk-button-default")}}
+        </div>   
+    </fieldset>
+</form>
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class = "uk-alert-{{ category }} uk-alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+{% endblock %}

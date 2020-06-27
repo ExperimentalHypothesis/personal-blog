@@ -11,3 +11,11 @@ class ContactForm(FlaskForm):
     # recaptcha = RecaptchaField()
     submit = SubmitField("Submit")
 
+
+class PostForm(FlaskForm):
+    """ Form for adding new article """
+
+    title = StringField("Title", validators=[DataRequired()])
+    body = TextAreaField("Body", validators=[DataRequired()], render_kw={"rows":20})
+    tags = StringField("Tags")
+    submit = SubmitField("Submit")

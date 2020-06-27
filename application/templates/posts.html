@@ -7,7 +7,7 @@
 
         <div>
             <h3>About Me - The Short Story</h3>
-            <p>I am a lonely Python, C/C++ coder with a strong background in financial markets, and an interest in modern art. I am not a computer scientist. I am more an application-driven guy, so sure I have many gaps in my knowledge. But I strive to do my best, keep learning new things, and pushing boundaries to the limits.</p>
+            <p>I am a lonely Python, C/C++ coder with a srong background in financial markets, and an interest in modern art. I am not a computer scientist but rather an application-driven guy, so sure I have many gaps in my knowledge. But I strive to do my best, keep learning new things, listening to smart gyus, correcting my mistakes and pushing boundaries to the limits.</p>
         </div>
   
         <hr>
@@ -21,46 +21,19 @@
 
     <div class="container col-sm-8">
 
+        {% for post in posts %}
         <article>
-            <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, ipsa!</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, rem ratione, cum autem facilis architecto velit pariatur provident debitis molestiae temporibus accusantium eum inventore vero amet eligendi expedita explicabo voluptas.
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}
             </p>
             <div style="text-align: right">
-                <a href="#"><button class="uk-button uk-button-small">Read More</button></a>
+                <a href="{{ url_for("post", post_id = post.id) }}"><button class="uk-button uk-button-small">Read More</button></a>
             </div>
         </article>
         <br>
+        {% endfor %}
 
-        <article>
-            <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, ipsa!</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, rem ratione, cum autem facilis architecto velit pariatur provident debitis molestiae temporibus accusantium eum inventore vero amet eligendi expedita explicabo voluptas.
-            </p>
-            <div style="text-align: right">
-                <a href="#"><button class="uk-button uk-button-small">Read More</button></a>
-            </div>
-        </article>
-        <br>
-
-        <article>
-            <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, ipsa!</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, rem ratione, cum autem facilis architecto velit pariatur provident debitis molestiae temporibus accusantium eum inventore vero amet eligendi expedita explicabo voluptas.
-            </p>
-            <div style="text-align: right">
-                <a href="#"><button class="uk-button uk-button-small">Read More</button></a>
-            </div>
-        </article>
-        <br>
-
-        <article>
-            <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, ipsa!</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, rem ratione, cum autem facilis architecto velit pariatur provident debitis molestiae temporibus accusantium eum inventore vero amet eligendi expedita explicabo voluptas.
-            </p>
-            <div style="text-align: right">
-                <a href="#"><button class="uk-button uk-button-small">Read More</button></a>
-            </div>
-        </article>
-        <br>
-
+       
     </div>
 </div>
 {% endblock %}
