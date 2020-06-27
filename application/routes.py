@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 
-from flask import render_template, url_for, redirect, flash, request
+from flask import render_template, url_for, redirect, flash, request, Markup
 from flask import current_app as app
 from .forms import ContactForm, PostForm
 from .models import db, MessageModel, PostModel
