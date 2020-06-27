@@ -5,6 +5,10 @@ from flask import current_app as app
 from .forms import ContactForm
 from .models import db, MessageModel
 
+@app.route('/')
+def index():
+    return render_template("posts.html")
+
 @app.route('/about')
 def about():
     return render_template("about.html")
