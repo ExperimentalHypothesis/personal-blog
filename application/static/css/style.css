@@ -1,3 +1,13 @@
-/* .container-fluid{
-    border-style: solid;
-} */
+body{
+    background-color: #F8F9FA;
+}
+
+.mycontainer{
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.about{
+    font-size: 14px;
+}

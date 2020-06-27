@@ -5,11 +5,10 @@
 
     <div class="container col-sm-4" style="text-align: justify">
 
-        <div>
-            <h3>About Me - The Short Story</h3>
-            <p>I am a lonely Python, C/C++ coder with a srong background in financial markets, and an interest in modern art. I am not a computer scientist but rather an application-driven guy, so sure I have many gaps in my knowledge. But I strive to do my best, keep learning new things, listening to smart gyus, correcting my mistakes and pushing boundaries to the limits.</p>
+        <div class="mycontainer">
+            <h4>About Me - The Short Story</h4>
+            <p class="about">I am a lonely Python, C/C++ coder with a strong background in financial markets, and an interest in modern art. I am not a computer scientist but rather an application-driven guy, so sure I have many gaps in my knowledge. But I strive to do my best, keep learning new things, listening to smart gyus, correcting my mistakes and pushing myself to the limits.</p>
         </div>
-  
         <hr>
         <div>
             <a class="twitter-timeline" data-theme="light" href="https://twitter.com/lukaskotatko/likes?ref_src=twsrc%5Etfw">Tweets Liked by @lukaskotatko</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -22,9 +21,9 @@
     <div class="container col-sm-8">
 
         {% for post in posts %}
-        <article>
+        <article class="mycontainer">
             <h3>{{ post.title }}</h3>
-            <p>{{ post.body | safe }}
+            <p>{{ post.body | safe | truncate(220) }}
             </p>
             <div style="text-align: right">
                 <a href="{{ url_for("post", post_id = post.id) }}"><button class="uk-button uk-button-small">Read More</button></a>
