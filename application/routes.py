@@ -28,14 +28,15 @@ def projects():
     return render_template("projects.html")
 
 
-@app.route('/post/new', methods=["GET", "POST"])
-def new_post():
+@app.route('/post/add', methods=["GET", "POST"])
+def add_post():
     """ Route for adding new article """
     form = PostForm()
     if form.validate_on_submit():
         title = request.form.get("title")
         body = request.form.get("body")
         tags = request.form.get("tags") # TODO check how to do multiple strings..
+        print(request.form.get("title"), form.title.data) # DEBUG stejne?
         post = PostModel(title=title,
                          body=body,
                          tags=tags,
@@ -43,8 +44,28 @@ def new_post():
         db.session.add(post)
         db.session.commit()
         flash(f"Post '{title}' was saved to database", 'success')
-        return redirect(url_for("new_post"))
-    return render_template("new_post.html", form=form)
+        return redirect(url_for("post", post_id=post.id))
+    return render_template("new_post.html", title="Add New Post", form=form)
+
+
+@app.route('/post/<int:post_id>/edit', methods=["GET", "POST"])
+def edit_post(post_id:int):
+    """ Route for editing the post """
+    post = PostModel.query.get_or_404(post_id)
+    form = PostForm()
+    # show the current text
+    if request.method == "GET":
+        form.title.data = post.title
+        form.body.data = post.body
+    # update and save the changed text
+    elif form.validate_on_submit():
+        post.title = form.title.data
+        post.body = form.body.data
+        db.session.commit()
+        flash("Post updated!", "success")
+        return redirect(url_for("post", post_id=post.id))
+    return render_template("new_post.html", title="Edit Post", form=form, )
+
 
     
 @app.route('/post/<int:post_id>')

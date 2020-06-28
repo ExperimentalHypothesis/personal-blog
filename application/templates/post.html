@@ -1,8 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container post" style="text-align: justify">
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.body | safe }}</p>
-</div>
+
+    <div class="container post">
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class = "uk-alert-{{ category }} uk-alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body | safe }}</p>
+    </div>
+
 {% endblock %}
