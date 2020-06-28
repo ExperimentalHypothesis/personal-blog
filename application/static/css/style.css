@@ -11,3 +11,20 @@ body{
 .about{
     font-size: 14px;
 }
+
+.longstory{
+    text-align: justify;
+   
+}
+
+@media screen and (min-width: 601px) {
+    .longstory {
+      width: 80%;
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    .longstory {
+        width: 100%;
+    }
+  }
