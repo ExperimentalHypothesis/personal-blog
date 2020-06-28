@@ -21,10 +21,17 @@ body{
     .longstory {
       width: 80%;
     }
+    .projects {
+        width: 80%;
+      }
   }
 
 @media screen and (max-width: 600px) {
     .longstory {
         width: 100%;
     }
+    .projects {
+        width: 100%;
+    }
   }
+
