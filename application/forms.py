@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, TextAreaField, SubmitField
+from wtforms import StringField, TextAreaField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Length, Email
 
 class ContactForm(FlaskForm):
@@ -18,4 +18,11 @@ class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     body = TextAreaField("Body", validators=[DataRequired()], render_kw={"rows":20})
     tags = StringField("Tags")
+    submit = SubmitField("Submit")
+
+
+class AdminForm(FlaskForm):
+    """ Form for logging as Admin """
+
+    password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Submit")

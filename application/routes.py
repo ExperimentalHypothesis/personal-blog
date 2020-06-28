@@ -2,7 +2,7 @@ from datetime import datetime as dt
 
 from flask import render_template, url_for, redirect, flash, request, Markup
 from flask import current_app as app
-from .forms import ContactForm, PostForm
+from .forms import ContactForm, PostForm, AdminForm
 from .models import db, MessageModel, PostModel
 
 
@@ -50,7 +50,7 @@ def add_post():
 
 @app.route('/post/<int:post_id>/edit', methods=["GET", "POST"])
 def edit_post(post_id:int):
-    """ Route for editing the post """
+    """ Route for editing a post """
     post = PostModel.query.get_or_404(post_id)
     form = PostForm()
     # show the current text
@@ -64,10 +64,20 @@ def edit_post(post_id:int):
         db.session.commit()
         flash("Post updated!", "success")
         return redirect(url_for("post", post_id=post.id))
-    return render_template("new_post.html", title="Edit Post", form=form, )
+    return render_template("new_post.html", title="Edit Post", form=form)
 
 
-    
+# TODO napojit na nejakej cudlik
+@app.route('/post/<int:post_id>/delete', methods=["POST"])
+def delete_post(post_id:int):
+    """ Route for deleting a post """
+    post = PostModel.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    flash(f"Post {post.title} deleted!", "success")
+    return redirect(url_for("posts"))
+
+
 @app.route('/post/<int:post_id>')
 def post(post_id:int):
     post = PostModel.query.get_or_404(post_id)
@@ -91,3 +101,10 @@ def contact():
         flash(f"Your message was sent succesfully. Thank you!", "success")
         return redirect(url_for("contact"))
     return render_template("contact.html", title="Contact Me", form=form)
+
+
+@app.route('/admin', methods=["GET", "POST"])
+def admin():
+    """ Route for logging as admin -> needed for creating and updating posts """
+    form = AdminForm()
+    return render_template("admin.html", form=form)
