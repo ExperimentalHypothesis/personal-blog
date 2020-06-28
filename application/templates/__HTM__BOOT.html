@@ -4,12 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/7qwp2z35h44e9cvg2lpufjieslgclq1h0phh1b0sclkh6i1j/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
-      tinymce.init({
-        selector: '.mytextarea'
-      });
+        tinymce.init({
+            selector: "textarea",
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
+        });
     </script>
 
   </head>
