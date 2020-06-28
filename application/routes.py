@@ -8,10 +8,10 @@ from .models import db, MessageModel, PostModel
 
 @app.route('/')
 def index():
-    return render_template("posts.html")
+    posts = PostModel.query.all()
+    return render_template("posts.html", posts=posts)
 
 
-@app.route('/')
 @app.route('/posts')
 def posts():
     posts = PostModel.query.all()
