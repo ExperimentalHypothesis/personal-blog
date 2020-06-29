@@ -1,89 +1,88 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <div class="container-fluid pt-5" >
+        <div class="row">
 
-<div class="container-fluid pt-5" >
-    <div class="row">
+            <!-- ADDRESS -->
+            <div class="col-sm-4">
+                <h3 class="title">Contact details</h3>
+                <legend class="border-bottom mb=4"></legend>
+                <p>Cabella Ligure <p>
+                <p>provincia Alexandria<p>
+                <p>Localita Centrassi 15</p>
+                <p>1150 00</p>
+                <p>Italy</p>
+            </div>
 
-        <!-- ADDRESS -->
-        <div class="col-sm-4">
-            <h3 class="title">Current Address</h3>
-            <legend class="border-bottom mb=4"></legend>
-            <p>Cabella Ligure <p>
-            <p>provincia Alexandria<p>
-            <p>Localita Centrassi 15</p>
-            <p>1150 00</p>
-            <p>Italy</p>
-        </div>
+            <!-- FORM -->
+            <div class="col-sm-8">
+                    <h3 class="title">{{ title }}</h3>
+                        <form action="" method="POST">
+                            <legend class="border-bottom mb=4"></legend>
+                            {{ form.hidden_tag() }}
+                            <fieldset class="uk-fieldset">
 
-        <!-- FORM -->
-        <div class="col-sm-8">
-                <h3 class="title">{{ title }}</h3>
-                    <form action="" method="POST">
-                        <legend class="border-bottom mb=4"></legend>
-                        {{ form.hidden_tag() }}
-                        <fieldset class="uk-fieldset">
+                                <!-- NAME + VALIDATION -->
+                                <div class="uk-margin">
+                                    {% if form.name.errors %}
+                                        {{ form.name(class="uk-input uk-form-small uk-form-danger")}}
+                                        <div class="uk-text-small uk-text-danger">
+                                            {% for error in form.name.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.name(class="uk-input uk-form-small")}}      
+                                    {% endif %}
+                                </div>
 
-                            <!-- NAME + VALIDATION -->
-                            <div class="uk-margin">
-                                {% if form.name.errors %}
-                                    {{ form.name(class="uk-input uk-form-small uk-form-danger")}}
+                                <!-- EMAIL + VALIDATION -->
+                                <div class="uk-margin">
+                                    {% if form.email.errors %}
+                                    {{ form.email(class="uk-input uk-form-small uk-form-danger")}}
                                     <div class="uk-text-small uk-text-danger">
-                                        {% for error in form.name.errors %}
+                                        {% for error in form.email.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
-                                {% else %}
-                                    {{ form.name(class="uk-input uk-form-small")}}      
-                                {% endif %}
-                            </div>
-
-                            <!-- EMAIL + VALIDATION -->
-                            <div class="uk-margin">
-                                {% if form.email.errors %}
-                                 {{ form.email(class="uk-input uk-form-small uk-form-danger")}}
-                                <div class="uk-text-small uk-text-danger">
-                                    {% for error in form.email.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
+                                    {% else %}
+                                        {{ form.email(class="uk-input uk-form-small")}}
+                                    {% endif %}
                                 </div>
-                                {% else %}
-                                    {{ form.email(class="uk-input uk-form-small")}}
-                                {% endif %}
-                            </div>
 
-                            <!-- MESSAGE VALIDATION -->
-                            <div class="uk-margin">
-                                {% if form.body.errors %}
-                                    {{ form.body(class="uk-textarea uk-form-danger")}}
-                                <div class="uk-text-small uk-text-danger">
-                                    {% for error in form.body.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
+                                <!-- MESSAGE VALIDATION -->
+                                <div class="uk-margin">
+                                    {% if form.body.errors %}
+                                        {{ form.body(class="uk-textarea uk-form-danger")}}
+                                    <div class="uk-text-small uk-text-danger">
+                                        {% for error in form.body.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                        {{ form.body(class="uk-textarea")}}
+                                    {% endif %}
                                 </div>
-                                {% else %}
-                                    {{ form.body(class="uk-textarea")}}
-                                {% endif %}
-                            </div>
 
-                            <div class="uk-margin">
-                                {{ form.submit(class="uk-button uk-button-default") }}
+                                <div class="uk-margin">
+                                    {{ form.submit(class="uk-button uk-button-default") }}
+                                </div>
+                            </fieldset>
+                        </form>
+                
+                    <!-- flash messages-->  
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="uk-alert-{{ category }} uk-alert">
+                                {{ message }}
                             </div>
-                        </fieldset>
-                    </form>
-            
-                <!-- flash messages-->  
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="uk-alert-{{ category }} uk-alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                {% endwith %}
-            </div>
-        <div>
-</div>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            <div>
+    </div>
 
 {% endblock %}

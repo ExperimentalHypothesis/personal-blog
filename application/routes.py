@@ -110,7 +110,7 @@ def contact():
         db.session.commit()
         flash(f"Your message was sent succesfully. Thank you!", "success")
         return redirect(url_for("contact"))
-    return render_template("contact.html", title="Contact Me", form=form)
+    return render_template("contact.html", title="Send me a message", form=form)
 
 
 @app.route('/admin', methods=["GET", "POST"])
