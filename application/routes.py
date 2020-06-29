@@ -4,6 +4,7 @@ from flask import render_template, url_for, redirect, flash, request, Markup
 from flask import current_app as app
 from flask_login import login_user, logout_user, current_user, login_required
 
+from . import bcrypt
 from .forms import ContactForm, PostForm, AdminForm
 from .models import db, MessageModel, PostModel, AdminModel
 
@@ -34,6 +35,7 @@ def projects():
 @login_required
 def add_post():
     """ Route for adding new article """
+
     form = PostForm()
     if form.validate_on_submit():
         title = request.form.get("title")
@@ -55,6 +57,7 @@ def add_post():
 @login_required
 def edit_post(post_id:int):
     """ Route for editing a post """
+
     post = PostModel.query.get_or_404(post_id)
     form = PostForm()
     # show the current text
@@ -76,6 +79,7 @@ def edit_post(post_id:int):
 @login_required
 def delete_post(post_id:int):
     """ Route for deleting a post """
+
     post = PostModel.query.get_or_404(post_id)
     db.session.delete(post)
     db.session.commit()
@@ -92,6 +96,7 @@ def post(post_id:int):
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     """ Route for processing the contact form """
+
     form = ContactForm()
     if form.validate_on_submit():
         name = request.form.get("name")
@@ -110,14 +115,12 @@ def contact():
 
 @app.route('/admin', methods=["GET", "POST"])
 def admin():
-    """ Route for logging as admin -> needed for creating and updating posts """
+    """ Route for logging as admin -> needed for creating/updating/deleting posts """
+
     form = AdminForm()
     if form.validate_on_submit():
         admin = AdminModel.query.get(1)
-        admin_password = admin.password
-        typed_password = form.password.data
-        print(admin_password, typed_password)
-        if admin_password == typed_password:
+        if bcrypt.check_password_hash(admin.password, form.password.data):
             login_user(admin)
             flash("You are logged in!", "success")
             return redirect(url_for("posts"))

@@ -19,7 +19,7 @@ class MessageModel(db.Model):
     time_sent = db.Column(db.DateTime, unique=False, nullable=False)
 
     def __repr__(self):
-        return f"<MessageModel {self.id}, {self.name}>"
+        return f"<Message {self.id}, {self.name}>"
 
 
 class PostModel(db.Model):
@@ -33,7 +33,7 @@ class PostModel(db.Model):
     time_posted = db.Column(db.DateTime, unique=False, nullable=False)
 
     def __repr__(self):
-        return f"<PostModel {self.id}, {self.title}>"
+        return f"<Post {self.id}, {self.title}>"
 
 
 class AdminModel(db.Model, UserMixin):
@@ -41,5 +41,10 @@ class AdminModel(db.Model, UserMixin):
 
     __tablename__ = "admins"
     id = db.Column(db.Integer, primary_key=True)
-    password = db.Column(db.String(60), nullable=False)
+    email = db.Column(db.String(60), nullable=False)
+    password = db.Column(db.String(256), nullable=False)
+
+    def __repr__(self):
+        return f"<Admin {self.email}>"
+
 
