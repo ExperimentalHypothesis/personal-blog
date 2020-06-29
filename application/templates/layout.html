@@ -13,13 +13,14 @@
     {% block styles %} {% endblock %}
 </head>
 
-<body>
-    <!-- top navbar -->
+<body class="d-flex flex-column min-vh-100">
+        <!-- top navbar -->
     {% include 'partials/navbar-top.html' %}
     <!-- content block -->
     <div class="container pt-5">
-        {% block content %} {% endblock %}
-    </div>
+        {% block content %} {% endblock %}    
+    </div>           
+    {% include 'partials/footer.html' %}
 </body>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
