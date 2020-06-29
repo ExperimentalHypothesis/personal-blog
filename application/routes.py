@@ -2,8 +2,10 @@ from datetime import datetime as dt
 
 from flask import render_template, url_for, redirect, flash, request, Markup
 from flask import current_app as app
+from flask_login import login_user, logout_user, current_user, login_required
+
 from .forms import ContactForm, PostForm, AdminForm
-from .models import db, MessageModel, PostModel
+from .models import db, MessageModel, PostModel, AdminModel
 
 
 @app.route('/')
@@ -29,6 +31,7 @@ def projects():
 
 
 @app.route('/post/add', methods=["GET", "POST"])
+@login_required
 def add_post():
     """ Route for adding new article """
     form = PostForm()
@@ -36,7 +39,7 @@ def add_post():
         title = request.form.get("title")
         body = request.form.get("body")
         tags = request.form.get("tags") # TODO check how to do multiple strings..
-        print(request.form.get("title"), form.title.data) # DEBUG stejne?
+        # print(request.form.get("title"), form.title.data) # DEBUG stejne?
         post = PostModel(title=title,
                          body=body,
                          tags=tags,
@@ -49,6 +52,7 @@ def add_post():
 
 
 @app.route('/post/<int:post_id>/edit', methods=["GET", "POST"])
+@login_required
 def edit_post(post_id:int):
     """ Route for editing a post """
     post = PostModel.query.get_or_404(post_id)
@@ -69,6 +73,7 @@ def edit_post(post_id:int):
 
 # TODO napojit na nejakej cudlik
 @app.route('/post/<int:post_id>/delete', methods=["POST"])
+@login_required
 def delete_post(post_id:int):
     """ Route for deleting a post """
     post = PostModel.query.get_or_404(post_id)
@@ -107,4 +112,14 @@ def contact():
 def admin():
     """ Route for logging as admin -> needed for creating and updating posts """
     form = AdminForm()
+    if form.validate_on_submit():
+        admin = AdminModel.query.get(1)
+        admin_password = admin.password
+        typed_password = form.password.data
+        print(admin_password, typed_password)
+        if admin_password == typed_password:
+            login_user(admin)
+            flash("You are logged in!", "success")
+            return redirect(url_for("posts"))
+        flash("Login failed!", "danger")
     return render_template("admin.html", form=form)

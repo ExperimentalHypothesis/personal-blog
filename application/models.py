@@ -1,4 +1,12 @@
-from application import db
+from application import db, login_manager
+from flask_login import UserMixin
+
+
+@login_manager.user_loader
+def load_user(id):
+    """ Must have callback function as decribed in the docs: https://flask-login.readthedocs.io/en/latest/ """
+    return AdminModel.query.get(int(id))
+
 
 class MessageModel(db.Model):
     """ Data model for message from contact form """
@@ -28,4 +36,10 @@ class PostModel(db.Model):
         return f"<PostModel {self.id}, {self.title}>"
 
 
+class AdminModel(db.Model, UserMixin):
+    """ Data model for admin """
+
+    __tablename__ = "admins"
+    id = db.Column(db.Integer, primary_key=True)
+    password = db.Column(db.String(60), nullable=False)
 

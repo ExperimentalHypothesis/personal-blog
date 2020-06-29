@@ -16,7 +16,19 @@
     </div>
     <div class="container col-sm-8">
 
-        {% for post in posts %}
+    <!-- FLASH MESSAGE WHEN I LOG IN -->  
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="uk-alert-{{ category }} uk-alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    
+    {% for post in posts %}
         <article class="mycontainer">
             <h3>{{ post.title }}</h3>
             <p>{{ post.body | safe | truncate(220) }}
@@ -26,7 +38,7 @@
             </div>
         </article>
         <br>
-        {% endfor %}
+    {% endfor %}
 
     </div>
 </div>
