@@ -9,9 +9,8 @@ class Config:
     """ Class than holds configuration variables """
 
     # general config 
-    SECRET_KEY = os.environ.get("SECRET_KEY") or "hello" # TODO delete
-    FLASK_APP = os.environ.get("FLASK_APP")
-    FLASK_ENV = os.environ.get("FLASK_ENV")
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    ENV = os.environ.get("ENV")
 
     # form config
     # TODO captcha
