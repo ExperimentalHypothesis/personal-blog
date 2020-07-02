@@ -3,8 +3,8 @@ from wtforms import StringField, TextAreaField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Length, Email, Optional, URL
 
 
-class ContactForm(FlaskForm):
-    """ Contact form """
+class MessageForm(FlaskForm):
+    """ Form for sending a message to me """
 
     name = StringField("Name", validators=[DataRequired(), Length(min=3, message=('This name is too short!'))], render_kw={"placeholder": "Name"})
     email = StringField("Email", validators=[Email(message=("This is not a valid email!")), DataRequired()], render_kw={"placeholder": "Email"})

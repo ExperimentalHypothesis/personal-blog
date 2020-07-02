@@ -25,7 +25,10 @@ def create_app():
         # 1] routes
         # 2] blueprints
         # whatever..  
-        from application import routes
+        from application import routes       
+        from application import routes_admin
+
+
         db.create_all()
 
         return app
