@@ -2,31 +2,28 @@
 
 {% block content %}
 
-    <!-- <div class="container admin"> -->
-        
-        <!-- FLASH MESSAGE WHEN I TRY TO LOG IN --> 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="uk-alert-{{ category }} uk-alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+ 
+        <div class="container admin">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="uk-alert-{{ category }} uk-alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}   
 
         <form action="" method="POST">
-            <legend class="border-bottom">Password</legend>
+            <legend class="border-bottom">Admin Password</legend>
             <fieldset>
                 {{ form.hidden_tag() }}
-                <div class="uk-margin">
                     {{ form.password(class="uk-input uk-form-small")}}
-                </div>
                 <div class="uk-margin">
-                    {{ form.submit(class="uk-button uk-button-default")}}
+                    {{ form.submit(class="uk-button uk-button-small admin-button")}}
                 </div>
             </fieldset>
         </form>
-    <!-- </div> -->
+    </div>
 
 {% endblock %}
