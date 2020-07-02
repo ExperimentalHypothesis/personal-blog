@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 
 from . import bcrypt
 from .forms import ContactForm, PostForm, AdminForm
-from .models import db, MessageModel, PostModel, AdminModel
+from .models import db, MessageModel, PostModel, ProjectModel, AdminModel
 
 
 @app.route('/')
@@ -28,7 +28,9 @@ def about():
 
 @app.route('/projects')
 def projects():
-    return render_template("projects.html")
+    """ Route for seeing all my projects """
+    projects = ProjectModel.query.all()
+    return render_template("projects.html", projects=projects)
 
 
 @app.route('/post/add', methods=["GET", "POST"])

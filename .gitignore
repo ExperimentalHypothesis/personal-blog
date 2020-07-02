@@ -2,5 +2,10 @@
 .venv
 .env
 
+
 # byte-compiled
 __pychace__/
+
+
+# ide sttings
+.vscode
