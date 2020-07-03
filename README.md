@@ -17,8 +17,11 @@ python -m venv myenv
 source myenv/bin/activate (on Windows myenv\Scripts\activate.bat)
 pip install -r requirements.txt
 ```
+## Run 
 
-In order to run it, you need to create an file where you store your environment variables. You should call it simply .env and put it in the root of your project. This is the file that is references in config.py. In that file, you need to store your environment variables. Your .env file need to contain at least the basic variables and should look something like this:
+In order to run it, you need to create a file where you store your environment variables. Call it  .env and put it in the root of your project. This is the file that is referenced in config.py. In that file, you need to store your environment variables, which are sensitive. Put this file into your gitignore.
+
+Your .env file need to contain at least the basic variables and should look something like this:
 
 ```
 ENV = development
@@ -33,10 +36,9 @@ MAIL_USERNAME = <your@email.com>
 MAIL_PASSWORD = <yourpassword>
 ```
 
-You can store other environment vars there as well, but these are sufficient in order to run it. Store this .env file in the root of the project.
+You can store other environment variabless there as well, but these are sufficient in order to run it.
 
-## Run 
-run command:
+Run command:
 ```
 python wsgi.py
 ```
