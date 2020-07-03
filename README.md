@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 
 ## Run 
-In order to run it, you need to make an file where you store environment variables. You should call it simply .env. This is the file that is references in config.py. In that file, you store SECRET_KEY and SQLALCHEMY_DATABASE_URI. You can store other environment vars, but these two are necessary in order to make it run.
+In order to run it, you need to make an file where you store environment variables. You should call it simply .env. This is the file that is references in config.py. In that file, you store SECRET_KEY and SQLALCHEMY_DATABASE_URI and ADMIN_EMAIL. You can store other environment vars the of course, but these two are necessary in order to make it run.
 
 run command:
 ```
