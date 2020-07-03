@@ -18,7 +18,7 @@ class PostForm(FlaskForm):
 
     title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Title"})
     body = TextAreaField("Body", validators=[DataRequired()], render_kw={"rows":20})
-    tags = StringField("Tags") # TODO implement
+    tags = StringField("Tags", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
 

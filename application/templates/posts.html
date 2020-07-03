@@ -16,6 +16,7 @@
     </div>
 
     <div class="container col-sm-8">
+
         <!-- FLASH MESSAGE WHEN I LOG IN -->  
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -26,19 +27,21 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
-        <!-- POSTS FEED ON THE RIGHT SIDE -->
+
+        <!-- POSTS FEED -->
         {% for post in posts %}
             <article class="mycontainer">
                 <h3>{{ post.title }}</h3>
-                <p>{{ post.body | safe | truncate(250) }}
-                </p>
-                <div style="text-align: right">
+                <p>{{ post.body | safe | truncate(250) }}</p>
+                
+                <div class="float-left">{{ post.tags }}</div>
+                <div class="float-right">
                     <a href="{{ url_for('post', post_id = post.id) }}"><button class="uk-button uk-button-small">Read More</button></a>
                 </div>
+                <br>
             </article>
             <br>
         {% endfor %}
     </div>
-
 </div>
 {% endblock %}

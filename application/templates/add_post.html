@@ -40,6 +40,20 @@
             {% endif %}
         </div>
 
+         <!--- TAGS + VALIDATION -->
+         <div class="uk-margin">
+            {% if form.tags.errors %}
+                {{ form.tags(class="uk-input uk-form-small uk-form-danger")}}
+                <div class="uk-text-small uk-text-danger">
+                    {% for errors in form.tags.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.tags(class="uk-input uk-form-small")}}
+            {% endif %}
+        </div>
+
         <div>
             {{ form.submit(class="uk-button uk-button-default")}}
         </div>   
