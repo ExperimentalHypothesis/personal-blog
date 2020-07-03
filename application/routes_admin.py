@@ -62,7 +62,7 @@ def edit_post(post_id:int):
         post.title = form.title.data
         post.body = form.body.data
         db.session.commit()
-        flash("Post updated!", "success")
+        flash("Post '{post.title}' updated!", "success")
         return redirect(url_for("post", post_id=post.id))
     return render_template("add_post.html", title="Edit Post", form=form)
 
@@ -99,3 +99,27 @@ def add_project():
         flash(f"Project '{form.title.data}' was saved to database", "success")
         return redirect(url_for("projects"))
     return render_template("add_project.html", title="Add project", form=form)
+
+
+@app.route('/project/<int:project_id>/edit', methods=["GET", "POST"])
+def edit_project(project_id:int):
+    """ Route for editing a project """
+
+    project = ProjectModel.query.get_or_404(project_id)
+    form = ProjectForm()
+    # show the current values
+    if request.method == "GET":
+        form.title.data = project.title
+        form.description.data = project.description
+        form.project_url.data = project.project_url
+        form.github_url.data = project.github_url
+    # save the new values
+    elif form.validate_on_submit():
+        project.title = form.title.data
+        project.description = form.description.data
+        project.project_url = form.project_url.data
+        project.github_url = form.github_url.data
+        db.session.commit()
+        flash(f"Project {project.title} updated!", "success")
+        return redirect(url_for("projects"))
+    return render_template("add_project.html", title="Edit post", form=form)

@@ -1,11 +1,12 @@
-# environments
+# virtual environments
 .venv
-.env
 
+# environment variables
+.env
 
 # byte-compiled
 __pychace__/
-
+.*pyc
 
 # ide sttings
 .vscode
