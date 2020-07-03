@@ -12,6 +12,10 @@ def index():
     posts = PostModel.query.all()
     return render_template("posts.html", posts=posts)
 
+@app.route('/tech')
+def tech():
+    return render_template("tech.html")
+
 
 @app.route('/posts')
 def posts():

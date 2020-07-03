@@ -30,7 +30,7 @@
         {% for post in posts %}
             <article class="mycontainer">
                 <h3>{{ post.title }}</h3>
-                <p>{{ post.body | safe | truncate(220) }}
+                <p>{{ post.body | safe | truncate(250) }}
                 </p>
                 <div style="text-align: right">
                     <a href="{{ url_for('post', post_id = post.id) }}"><button class="uk-button uk-button-small">Read More</button></a>
