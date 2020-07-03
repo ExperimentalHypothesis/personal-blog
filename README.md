@@ -1,6 +1,8 @@
 # flask-personal-blog
 This is a blog type personal website written in python Flask. You can use it is as a reference or a starting point for your own website if you will. All you need to do is to clone it, and change environment variables. All explained bellow.
 
+Website is running here: https://lukaskotatko.com
+
 ## Instalation
 
 Installation via requirements.txt:
