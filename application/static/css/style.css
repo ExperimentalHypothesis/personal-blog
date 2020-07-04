@@ -35,7 +35,8 @@ body {
 
 .tags {
     text-align: left;
-    font-size: small;
+    font-size: 12px;
+    font-style: italic;
 }
 
 .admin{
