@@ -1,7 +1,11 @@
-# flask-personal-blog
-This is a blog type personal website written in python Flask. You can use it is as a reference or a starting point for your own website if you will. All you need to do is to clone it, and change environment variables. All explained bellow.
+# Personal Blog Website
+This is a blog type personal website written in Python Flask. You can use it is as a reference or a starting point for your website if you will. All you need to do is to clone it and change the environment variables. All explained below.
 
-Website is running here: https://lukaskotatko.com
+Website is live: https://lukaskotatko.com
+
+## Implementation
+
+This site is a static web page that implements common blog-type functionality as adding/editing/deleting posts or projects and sending emails via forms. It can be extended in any way since Flask is a very modular framework.
 
 ## Instalation
 
@@ -13,13 +17,28 @@ python -m venv myenv
 source myenv/bin/activate (on Windows myenv\Scripts\activate.bat)
 pip install -r requirements.txt
 ```
-
 ## Run 
-In order to run it, you need to make an file where you store environment variables. You should call it simply .env. This is the file that is references in config.py. In that file, you store SECRET_KEY and SQLALCHEMY_DATABASE_URI and ADMIN_EMAIL. You can store other environment vars the of course, but these two are necessary in order to make it run.
 
-run command:
+In order to run it, you need to create a file where you store your environment variables. Call it  .env and put it in the root of your project. This is the file that is referenced in config.py. In that file, you need to store your environment variables, which are sensitive. Put this file into your gitignore.
+
+Your .env file need to contain at least the basic variables and should look something like this:
+
+```
+ENV = development
+SECRET_KEY = whatever
+
+SQLALCHEMY_DATABASE_URI = sqlite:///blog.db
+
+ADMIN_EMAIL = <your@email.com>
+
+MAIL_SERVER = <your mail server> 
+MAIL_USERNAME = <your@email.com>
+MAIL_PASSWORD = <yourpassword>
+```
+
+You can store other environment variabless there as well, but these are sufficient in order to run it.
+
+Run command:
 ```
 python wsgi.py
 ```
-
-
