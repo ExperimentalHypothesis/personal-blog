@@ -35,9 +35,9 @@
                 <p>{{ post.body | safe | truncate(250) }}</p>
                 
                 {%+ for tag in post.tags.split(",") %}
-                {%+ if tag %}
-                    <a href="#"><div class="float-left tags">{{+ tag }}&nbsp</div></a>
-                {%+ endif  %}
+                    {%+ if tag %}
+                        <a href=" {{url_for('tagged_posts', tag=tag.strip()) }} "><div class="float-left tags">{{+ tag }}&nbsp</div></a>
+                    {%+ endif  %}
                  {%+ endfor %}
 
 
