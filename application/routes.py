@@ -42,6 +42,14 @@ def post(post_id:int):
     return render_template("post.html", post=post)
 
 
+@app.route("/tag/<string:tag>")
+def tagged_posts(tag:str):
+    """ Route for seeing articles that have particular tag """
+
+    posts = PostModel.query.filter(PostModel.tags.contains(tag)).all()
+    return render_template("tags.html", posts=posts)
+
+
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     """ Route for processing the contact form """
