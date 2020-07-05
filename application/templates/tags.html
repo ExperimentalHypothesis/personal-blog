@@ -29,24 +29,7 @@
         {% endwith %}
 
         <!-- POSTS FEED -->
-        {%+ for post in posts %}
-            <article class="mycontainer">
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.body | safe | truncate(250) }}</p>
-                
-                {%+ for tag in post.tags.split(",") %}
-                    {%+ if tag %}
-                        <a href=" {{url_for('tagged_posts', tag=tag.strip()) }} "><div class="float-left tags">{{+ tag }}&nbsp</div></a>
-                    {%+ endif  %}
-                 {%+ endfor %}
-
-                <div class="float-right">
-                    <a href="{{ url_for('post', post_id = post.id) }}"><button class="uk-button uk-button-small">Read More</button></a>
-                </div>
-                <br>
-            </article>
-            <br>
-        {%+ endfor %}
+        {% include 'partials/article.html' %}
     </div>
 </div>
 {% endblock %}

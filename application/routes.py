@@ -7,18 +7,17 @@ from .forms import MessageForm
 from .models import db, MessageModel, PostModel, ProjectModel
 
 
-@app.route('/')
-def index():
-    posts = PostModel.query.all()
-    return render_template("posts.html", posts=posts)
+# def index():
+#     posts = PostModel.query.all()
+#     return render_template("posts.html", posts=posts)
 
 @app.route('/tech')
 def tech():
     return render_template("tech.html")
 
-
+@app.route('/')
 @app.route('/posts')
-def posts():
+def index():
     posts = PostModel.query.all()
     return render_template("posts.html", posts=posts)
 
@@ -44,7 +43,7 @@ def post(post_id:int):
 
 @app.route("/tag/<string:tag>")
 def tagged_posts(tag:str):
-    """ Route for seeing articles that have particular tag """
+    """ Route for seeing posts that have particular tag """
 
     posts = PostModel.query.filter(PostModel.tags.contains(tag)).all()
     return render_template("tags.html", posts=posts)
