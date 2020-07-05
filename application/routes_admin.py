@@ -19,7 +19,7 @@ def admin():
         if bcrypt.check_password_hash(admin.password, form.password.data):
             login_user(admin)
             flash("You are logged in!", "success")
-            return redirect(url_for("posts"))
+            return redirect(url_for("index"))
         flash("Login failed!", "danger")
     return render_template("admin.html", form=form)
 
