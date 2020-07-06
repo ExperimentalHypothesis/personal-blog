@@ -21,7 +21,6 @@ def index():
     """ Route for home page, the same as when clicked on posts in menu """
 
     page = request.args.get("page", 1, type=int)
-
     posts = PostModel.query.order_by(PostModel.time_posted.desc()).paginate(page, per_page=2, error_out=True)
     return render_template("posts.html", posts=posts)
 
@@ -49,7 +48,9 @@ def post(post_id:int):
 def tagged_posts(tag:str):
     """ Route for seeing posts that have particular tag """
 
-    posts = PostModel.query.filter(PostModel.tags.contains(tag)).all()
+    page = request.args.get("page", 1, type=int)
+    contains_tag = PostModel.tags.contains(tag) # subquery
+    posts = PostModel.query.filter(contains_tag).paginate(page, per_page=2, error_out=True)
     return render_template("tags.html", posts=posts)
 
 
