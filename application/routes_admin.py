@@ -1,3 +1,6 @@
+import os
+
+from dotenv import load_dotenv
 from datetime import datetime as dt
 
 from flask import current_app as app
@@ -15,7 +18,8 @@ def admin():
 
     form = AdminForm()
     if form.validate_on_submit():
-        admin = AdminModel.query.filter_by(email="kotatko.lukas@gmail.com").first()
+
+        admin = AdminModel.query.filter_by(email='lalalala@gmail.com').first()
         if bcrypt.check_password_hash(admin.password, form.password.data):
             login_user(admin)
             flash("You are logged in!", "success")
@@ -57,10 +61,12 @@ def edit_post(post_id:int):
     if request.method == "GET":
         form.title.data = post.title
         form.body.data = post.body
+        form.tags.data = post.tags
     # update and save the changed text
     elif form.validate_on_submit():
         post.title = form.title.data
         post.body = form.body.data
+        post.tags = form.tags.data
         db.session.commit()
         flash("Post '{post.title}' updated!", "success")
         return redirect(url_for("post", post_id=post.id))

@@ -18,7 +18,11 @@ def tech():
 @app.route('/')
 @app.route('/posts')
 def index():
-    posts = PostModel.query.all()
+    """ Route for home page, the same as when clicked on posts in menu """
+
+    page = request.args.get("page", 1, type=int)
+
+    posts = PostModel.query.order_by(PostModel.time_posted.desc()).paginate(page, per_page=2, error_out=True)
     return render_template("posts.html", posts=posts)
 
 

@@ -20,6 +20,7 @@ class Config:
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+
     
 if __name__ == "__main__":
     pass
