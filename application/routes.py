@@ -50,7 +50,7 @@ def tagged_posts(tag:str):
 
     page = request.args.get("page", 1, type=int)
     contains_tag = PostModel.tags.contains(tag) # subquery
-    posts = PostModel.query.filter(contains_tag).paginate(page, per_page=2, error_out=True)
+    posts = PostModel.query.filter(contains_tag).paginate(page, per_page=8, error_out=True)
     return render_template("tags.html", posts=posts)
 
 

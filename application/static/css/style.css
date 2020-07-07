@@ -8,8 +8,12 @@ a:link {
 
 a:hover {
     color: #2d2d2d;
-
 }
+
+a:hover {
+    color:black;
+}
+
 .mycontainer{
     background-color: white;
     padding: 15px;
@@ -37,7 +41,7 @@ body {
     text-align: left;
     font-size: 12px;
     font-style: italic;
-    color: blueviolet;
+    color: black;
 }
 
 .admin{

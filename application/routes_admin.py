@@ -19,7 +19,7 @@ def admin():
     form = AdminForm()
     if form.validate_on_submit():
 
-        admin = AdminModel.query.filter_by(email='lalalala@gmail.com').first()
+        admin = AdminModel.query.filter_by(email='kotatko.lukas@gmail.com').first()
         if bcrypt.check_password_hash(admin.password, form.password.data):
             login_user(admin)
             flash("You are logged in!", "success")
