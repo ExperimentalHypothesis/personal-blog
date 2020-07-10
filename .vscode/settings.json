@@ -1,5 +1,22 @@
 {
     "python.pythonPath": ".venv\\Scripts\\python.exe",
+    
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "python.linting.mypyCategorySeverity.error": "Warning"
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "160"
+    ],
+
+    "python.linting.flake8Args": [
+        "--max-line-length=165",
+        "--ignore=E402,W292",
+    ],
+
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pydocstyleArgs": [
+        "--ignore=D210,D203,D100,D104,D105",   
+    ],   
 }
