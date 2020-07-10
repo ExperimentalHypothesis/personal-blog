@@ -1,4 +1,3 @@
-""" THIS IS THE ENTRY POINT """
 from application import create_app
 app = create_app()
 

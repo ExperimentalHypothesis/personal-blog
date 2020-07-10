@@ -1,10 +1,10 @@
-from flask_wtf import FlaskForm, RecaptchaField
+from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Length, Email, Optional, URL
 
 
 class MessageForm(FlaskForm):
-    """ Form for sending a message to me """
+    """ Form for sending a message to me. """
 
     name = StringField("Name", validators=[DataRequired(), Length(min=3, message=('This name is too short!'))], render_kw={"placeholder": "Name"})
     email = StringField("Email", validators=[Email(message=("This is not a valid email!")), DataRequired()], render_kw={"placeholder": "Email"})
@@ -14,26 +14,26 @@ class MessageForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    """ Form for adding new article """
+    """ Form for adding new article. """
 
     title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Title"})
-    body = TextAreaField("Body", validators=[DataRequired()], render_kw={"rows":20})
+    body = TextAreaField("Body", validators=[DataRequired()], render_kw={"rows": 20})
     tags = StringField("Tags", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
 
 class ProjectForm(FlaskForm):
-    """ Form for adding new project """
+    """ Form for adding new project. """
 
     title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Title"})
     project_url = StringField("Project URL", validators=[Optional(), URL(require_tld=False, message="URL is invalid")], render_kw={"placeholder": "Project URL"})
     github_url = StringField("Github URL", validators=[Optional(), URL(require_tld=False, message="URL is invalid")], render_kw={"placeholder": "Github URL"})
-    description = TextAreaField("Description", validators=[DataRequired()], render_kw={"rows":20})
+    description = TextAreaField("Description", validators=[DataRequired()], render_kw={"rows": 20})
     submit = SubmitField("Submit")
 
 
 class AdminForm(FlaskForm):
-    """ Form for logging as Admin """
+    """ Form for logging as Admin. """
 
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Submit")

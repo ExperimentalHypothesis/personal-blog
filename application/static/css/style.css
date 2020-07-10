@@ -56,6 +56,10 @@ body {
     text-align: center;
 }
 
+.projects{
+    text-align: justify;
+}
+
 .admin-button{
     width: 100%;
 }

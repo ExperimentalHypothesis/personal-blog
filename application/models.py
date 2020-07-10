@@ -4,12 +4,12 @@ from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_user(id):
-    """ Must have callback function as decribed in the docs: https://flask-login.readthedocs.io/en/latest/ """
+    """ Must have callback function as decribed in the docs: https://flask-login.readthedocs.io/en/latest/. """
     return AdminModel.query.get(int(id))
 
 
 class MessageModel(db.Model):
-    """ Data model for message from contact form """
+    """ Data model for message from contact form. """
 
     __tablename__ = "messages"
 
@@ -24,7 +24,7 @@ class MessageModel(db.Model):
 
 
 class PostModel(db.Model):
-    """ Data model for post """
+    """ Data model for post. """
 
     __tablename__ = "posts"
 
@@ -39,7 +39,7 @@ class PostModel(db.Model):
 
 
 class ProjectModel(db.Model):
-    """ Data model for project """
+    """ Data model for project. """
 
     __tablename__ = "projects"
 
@@ -49,13 +49,13 @@ class ProjectModel(db.Model):
     project_url = db.Column(db.String(256), unique=False, nullable=True)
     github_url = db.Column(db.String(256), unique=False, nullable=True)
     time_added = db.Column(db.DateTime, unique=False, nullable=False)
-    
+
     def __repr__(self):
         return f"<Project {self.id}: {self.title}>"
 
 
 class AdminModel(db.Model, UserMixin):
-    """ Data model for admin """
+    """ Data model for admin. """
 
     __tablename__ = "admins"
 
@@ -65,5 +65,3 @@ class AdminModel(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<Admin {self.email}>"
-
-
