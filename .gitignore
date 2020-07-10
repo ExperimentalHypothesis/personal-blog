@@ -1,3 +1,6 @@
+# testing scripts
+___testing_scripts___ .py
+
 # virtual environments
 .venv
 
@@ -9,4 +12,8 @@ __pychace__/
 .*pyc
 
 # ide sttings
-.vscode
+
+
+# local database 
+*.db
+*.sqlite3
