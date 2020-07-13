@@ -18,8 +18,8 @@ def create_app():
     bcrypt.init_app(app)
 
     with app.app_context():
-        from application import routes    
-        from application import routes_admin
+        from application import routes # noqa F401
+        from application import routes_admin # noqa F401
 
         db.create_all()
 

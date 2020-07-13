@@ -1,4 +1,4 @@
-{%+ for post in posts.items %}
+{% for post in posts.items %}
     <article class="mycontainer">
         <h3>{{ post.title }}</h3>
         <p>{{ post.body | safe | truncate(250) }}</p>
@@ -15,4 +15,4 @@
         <br>
     </article>
 <br>
-{%+ endfor %}
+{% endfor %}

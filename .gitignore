@@ -17,3 +17,7 @@ __pychace__/
 # local database 
 *.db
 *.sqlite3
+
+
+# testing
+.testing_file.py
