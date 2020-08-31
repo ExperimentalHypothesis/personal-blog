@@ -5,7 +5,7 @@ Website is live: https://lukaskotatko.com
 
 ## Implementation
 
-This site is a static web page that implements common blog-type functionality as adding/editing/deleting posts or projects and sending emails via forms. It can be extended in any way since Flask is a very modular framework.
+This site is a static web page that implements common blog-type functionality as adding/editing/deleting posts or projects, tagging articles, sending emails via forms etc.. It can be extended in any way since Flask is a very modular framework.
 
 ## Instalation
 
