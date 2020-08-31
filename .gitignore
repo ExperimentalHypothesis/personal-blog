@@ -3,6 +3,7 @@ ___testing_scripts___ .py
 
 # virtual environments
 .venv
+venv/
 
 # environment variables
 .env
