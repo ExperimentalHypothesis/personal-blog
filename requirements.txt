@@ -27,7 +27,7 @@ pep8==1.7.1
 pickleshare==0.7.5
 prompt-toolkit==3.0.5
 pycparser==2.20
-Pygments==2.6.1
+Pygments==2.7.4
 PyLin==0.2.7
 pylint==2.5.3
 pyserial==3.4
