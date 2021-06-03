@@ -9,7 +9,8 @@ venv/
 .env
 
 # byte-compiled
-__pychace__/
+application/__pycache__/
+__pycache__/
 .*pyc
 
 # ide sttings
@@ -18,6 +19,11 @@ __pychace__/
 # local database 
 *.db
 *.sqlite3
+
+
+*.ini
+*.sql
+logs/
 
 
 # testing
